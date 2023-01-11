@@ -65,8 +65,8 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(template) {
-  return template.replace('Hello, ', '').replace('!', '');
+function extractNameFromTemplate(string) {
+  return string.replace('Hello, ', '').replace('!', '');
 }
 
 
@@ -80,8 +80,8 @@ function extractNameFromTemplate(template) {
  *   'John Doe'  => 'J'
  *   'cat'       => 'c'
  */
-function getFirstChar(str) {
-  return str.scharAt(0);
+function getFirstChar(string) {
+  return string.scharAt(0);
 }
 
 /**
@@ -95,8 +95,8 @@ function getFirstChar(str) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(string) {
+  return string.trim();
 }
 
 /**
@@ -110,8 +110,8 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString(/* value, count */) {
-  throw new Error('Not implemented');
+function repeatString(string, count) {
+  return string.repeat(count);
 }
 
 /**
@@ -126,8 +126,8 @@ function repeatString(/* value, count */) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(string, substring) {
+  return string.replace(substring, '');
 }
 
 /**
@@ -141,8 +141,9 @@ function removeFirstOccurrences(/* str, value */) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(string) {
+  let match = string.match(/<\/?([^\s]+)/);
+  return match[1];
 }
 
 
@@ -156,8 +157,8 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(string) {
+  return string.toUpperCase();
 }
 
 /**
@@ -175,8 +176,8 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(string) {
+  return string.split(/;\s*/);
 }
 
 /**
@@ -202,8 +203,21 @@ function extractEmails(/* str */) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(height, width) {
+  let rectangle = '';
+  for (let i = 0; i < height; i++) {
+      for (let j = 0; j < width; j++) {
+          if (i === 0 || i === height - 1) {
+              rectangle += '-';
+          } else if (j === 0 || j === width - 1) {
+              rectangle += '|';
+          } else {
+              rectangle += ' ';
+          }
+      }
+      rectangle += '\n';
+  }
+  return rectangle;
 }
 
 
