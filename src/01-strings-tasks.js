@@ -139,7 +139,7 @@ function removeFirstOccurrences(string, substring) {
  *   '<a>' => 'a'
  */
 function unbracketTag(string) {
-  let match = string.match(/<\/?([^\s]+)/);
+  const match = string.match(/<\/?([^\s]+)/);
   return match[1];
 }
 
@@ -234,7 +234,7 @@ function getRectangleString(height, width) {
  */
 function encodeToRot13(string) {
   let result = '';
-  for (let i = 0; i < string.length; i++) {
+  for (let i = 0; i < string.length; i += 1) {
     let charCode = string.charCodeAt(i);
     if (charCode >= 'A'.charCodeAt(0) && charCode <= 'Z'.charCodeAt(0)) {
       charCode = ((charCode - 'A'.charCodeAt(0) + 13) % 26) + 'A'.charCodeAt(0);
@@ -289,9 +289,9 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(card) {
-  let rank = card.slice(0, -1);
-  let suit = card.slice(-1);
-  let ranks = [
+  const rank = card.slice(0, -1);
+  const suit = card.slice(-1);
+  const ranks = [
     'A',
     '2',
     '3',
@@ -306,8 +306,8 @@ function getCardId(card) {
     'Q',
     'K',
   ];
-  let suits = ['♣', '♦', '♥', '♠'];
-  let cardValue = ranks.indexOf(rank) * suits.length + suits.indexOf(suit);
+  const suits = ['♣', '♦', '♥', '♠'];
+  const cardValue = ranks.indexOf(rank) * suits.length + suits.indexOf(suit);
   return cardValue;
 }
 
