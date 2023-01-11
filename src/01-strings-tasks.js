@@ -5,7 +5,6 @@
  *                                                                                           *
  ******************************************************************************************* */
 
-
 /**
  * Returns the result of concatenation of two strings.
  *
@@ -21,7 +20,6 @@
 function concatenateStrings(str1, str2) {
   return str1 + str2;
 }
-
 
 /**
  * Returns the length of given string.
@@ -68,7 +66,6 @@ function getStringFromTemplate(firstName, lastName) {
 function extractNameFromTemplate(string) {
   return string.replace('Hello, ', '').replace('!', '');
 }
-
 
 /**
  * Returns a first char of the given string.
@@ -146,7 +143,6 @@ function unbracketTag(string) {
   return match[1];
 }
 
-
 /**
  * Converts all characters of the specified string into the upper case
  *
@@ -206,20 +202,19 @@ function extractEmails(string) {
 function getRectangleString(height, width) {
   let rectangle = '';
   for (let i = 0; i < height; i += 1) {
-      for (let j = 0; j < width; j += 1) {
-          if (i === 0 || i === height - 1) {
-              rectangle += '-';
-          } else if (j === 0 || j === width - 1) {
-              rectangle += '|';
-          } else {
-              rectangle += ' ';
-          }
+    for (let j = 0; j < width; j += 1) {
+      if (i === 0 || i === height - 1) {
+        rectangle += '-';
+      } else if (j === 0 || j === width - 1) {
+        rectangle += '|';
+      } else {
+        rectangle += ' ';
       }
-      rectangle += '\n';
+    }
+    rectangle += '\n';
   }
   return rectangle;
 }
-
 
 /**
  * Encode specified string with ROT13 cipher
@@ -238,15 +233,15 @@ function getRectangleString(height, width) {
  *
  */
 function encodeToRot13(string) {
-  let result = "";
+  let result = '';
   for (let i = 0; i < string.length; i++) {
-      let charCode = string.charCodeAt(i);
-      if (charCode >= "A".charCodeAt(0) && charCode <= "Z".charCodeAt(0)) {
-          charCode = (charCode - "A".charCodeAt(0) + 13) % 26 + "A".charCodeAt(0);
-      } else if (charCode >= "a".charCodeAt(0) && charCode <= "z".charCodeAt(0)) {
-          charCode = (charCode - "a".charCodeAt(0) + 13) % 26 + "a".charCodeAt(0);
-      }
-      result += String.fromCharCode(charCode);
+    let charCode = string.charCodeAt(i);
+    if (charCode >= 'A'.charCodeAt(0) && charCode <= 'Z'.charCodeAt(0)) {
+      charCode = ((charCode - 'A'.charCodeAt(0) + 13) % 26) + 'A'.charCodeAt(0);
+    } else if (charCode >= 'a'.charCodeAt(0) && charCode <= 'z'.charCodeAt(0)) {
+      charCode = ((charCode - 'a'.charCodeAt(0) + 13) % 26) + 'a'.charCodeAt(0);
+    }
+    result += String.fromCharCode(charCode);
   }
   return result;
 }
@@ -268,7 +263,6 @@ function isString(value) {
   // return Object.prototype.toString.call(value) === '[object String]';
   return typeof value === 'string';
 }
-
 
 /**
  * Returns playid card id.
@@ -297,12 +291,25 @@ function isString(value) {
 function getCardId(card) {
   let rank = card.slice(0, -1);
   let suit = card.slice(-1);
-  let ranks = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+  let ranks = [
+    'A',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    'J',
+    'Q',
+    'K',
+  ];
   let suits = ['♣', '♦', '♥', '♠'];
   let cardValue = ranks.indexOf(rank) * suits.length + suits.indexOf(suit);
   return cardValue;
 }
-
 
 module.exports = {
   concatenateStrings,
