@@ -65,7 +65,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
+function extractNameFromTemplate(template) {
   return template.replace('Hello, ', '').replace('!', '');
 }
 
@@ -81,7 +81,7 @@ function extractNameFromTemplate(/* value */) {
  *   'cat'       => 'c'
  */
 function getFirstChar(str) {
-  return str.substring(0,1);
+  return str.scharAt(0);
 }
 
 /**
