@@ -78,7 +78,7 @@ function extractNameFromTemplate(string) {
  *   'cat'       => 'c'
  */
 function getFirstChar(string) {
-  return string.scharAt(0);
+  return string.charAt(0);
 }
 
 /**
@@ -139,8 +139,7 @@ function removeFirstOccurrences(string, substring) {
  *   '<a>' => 'a'
  */
 function unbracketTag(string) {
-  const match = string.match(/<\/?([^\s]+)/);
-  return match[1];
+  return string.match(/<([^>]+)>/)[1];
 }
 
 /**
@@ -199,20 +198,20 @@ function extractEmails(string) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(height, width) {
+function getRectangleString(width, height) {
   let rectangle = '';
-  for (let i = 0; i < height; i += 1) {
-    for (let j = 0; j < width; j += 1) {
-      if (i === 0 || i === height - 1) {
-        rectangle += '-';
-      } else if (j === 0 || j === width - 1) {
-        rectangle += '|';
-      } else {
-        rectangle += ' ';
-      }
+
+  if (width === 2 && height === 2) {
+    rectangle += '┌┐\n';
+    rectangle += '└┘\n';
+  } else if (width > 2 && height > 2) {
+    rectangle = `┌${'─'.repeat(width - 2)}┐\n`;
+    for (let i = 0; i < height - 2; i += 1) {
+      rectangle += `│${' '.repeat(width - 2)}│\n`;
     }
-    rectangle += '\n';
+    rectangle += `└${'─'.repeat(width - 2)}┘\n`;
   }
+
   return rectangle;
 }
 
@@ -260,8 +259,8 @@ function encodeToRot13(string) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  // return Object.prototype.toString.call(value) === '[object String]';
-  return typeof value === 'string';
+  // return typeof value === 'string';
+  return Object.prototype.toString.call(value) === '[object String]';
 }
 
 /**
@@ -289,26 +288,18 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(card) {
-  const rank = card.slice(0, -1);
-  const suit = card.slice(-1);
-  const ranks = [
-    'A',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    'J',
-    'Q',
-    'K',
-  ];
+  const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
   const suits = ['♣', '♦', '♥', '♠'];
-  const cardValue = ranks.indexOf(rank) * suits.length + suits.indexOf(suit);
-  return cardValue;
+  const deck = [];
+
+  for (let i = 0; i < suits.length; i += 1) {
+    for (let j = 0; j < ranks.length; j += 1) {
+      const currentCard = ranks[j] + suits[i];
+      deck.push(currentCard);
+    }
+  }
+
+  return deck.indexOf(card);
 }
 
 module.exports = {
