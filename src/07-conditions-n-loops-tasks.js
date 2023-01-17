@@ -469,8 +469,35 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  // check rows for a winning player
+  for (let i = 0; i < position.length; i += 1) {
+    if (position[i][0] !== undefined
+      && position[i][0] === position[i][1] && position[i][1] === position[i][2]) {
+      return position[i][0];
+    }
+  }
+
+  // check columns for a winning player
+  for (let i = 0; i < position.length; i += 1) {
+    if (position[0][i] !== ''
+    && position[0][i] === position[1][i] && position[1][i] === position[2][i]) {
+      return position[0][i];
+    }
+  }
+
+  // check diagonals for a winning player
+  if (position[0][0] !== undefined
+    && position[0][0] === position[1][1] && position[1][1] === position[2][2]) {
+    return position[0][0];
+  }
+  if (position[0][2] !== ''
+  && position[0][2] === position[1][1] && position[1][1] === position[2][0]) {
+    return position[0][2];
+  }
+
+  // return undefined if no winning player is found
+  return undefined;
 }
 
 
