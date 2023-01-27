@@ -146,6 +146,49 @@ const cssSelectorBuilder = {
 };
 
 
+// const cssSelectorBuilder = {
+//   elements: [],
+//   selectors: [],
+//   element(value) {
+//     this.elements.push(value);
+//     return this;
+//   },
+
+//   id(value) {
+//     this.selectors.push(`#${value}`);
+//     return this;
+//   },
+
+//   class(value) {
+//     this.selectors.push(`.${value}`);
+//     return this;
+//   },
+
+//   attr(value) {
+//     this.selectors.push(`[${value}]`);
+//     return this;
+//   },
+
+//   pseudoClass(value) {
+//     this.selectors.push(`:${value}`);
+//     return this;
+//   },
+
+//   pseudoElement(value) {
+//     this.selectors.push(`::${value}`);
+//     return this;
+//   },
+
+//   combine(selector1, combinator, selector2) {
+//     this.selectors.push(`${selector1} ${combinator} ${selector2}`);
+//     return this;
+//   },
+//   stringify() {
+//     return `${this.elements.join('')}${this.selectors.join('')}`;
+//   },
+// };
+
+
 module.exports = {
   Rectangle,
   getJSON,
